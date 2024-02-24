@@ -94,7 +94,7 @@ class TeacherLoginPage extends StatelessWidget {
                 minimumSize: const Size(350.0, 45.0),
               ),
               child:  Padding(
-                padding: EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Row(
                   
                   children: [
@@ -106,7 +106,7 @@ class TeacherLoginPage extends StatelessWidget {
                       )
                    
                     ),
-                    SizedBox(width: 49,),
+                    const SizedBox(width: 49,),
                      const Text(
                       'Login with Google',
                       style: TextStyle(
@@ -123,7 +123,7 @@ class TeacherLoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Not Registered yet? ',
                   style: TextStyle(
                     color: Colors.grey,
