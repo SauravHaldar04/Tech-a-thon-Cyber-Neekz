@@ -10,7 +10,7 @@ class StudentSignupPage2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Create an account',
+          'Student SignUp',
           style: TextStyle(
               color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),
         ),
@@ -25,6 +25,7 @@ class StudentSignupPage2 extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(height: 120.0),
               const TextField(
                 decoration: InputDecoration(
                   labelText: 'Email',

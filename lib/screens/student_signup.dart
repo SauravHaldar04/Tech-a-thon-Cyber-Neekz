@@ -19,12 +19,16 @@ class StudentSignupPage extends StatelessWidget {
               const BoxDecoration(gradient: GlobalVariables.primaryGradient),
         ),
       ),
+      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
+         
         child: SingleChildScrollView(
+           
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(height: 120.0),
               const TextField(
                 decoration: InputDecoration(
                   labelText: 'Student ID',
