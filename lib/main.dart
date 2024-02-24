@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:techathon/screens/student_signup.dart';
+import 'package:techathon/screens/student_signup_2.dart';
 import 'package:techathon/screens/teacher_signup.dart';
 import 'package:techathon/screens/user_type_selection.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Inter',
         primarySwatch: Colors.blue,
       ),
-      home: const UserTypeSelectionPage(),
+      home: const StudentSignupPage2(),
     );
   }
 }
