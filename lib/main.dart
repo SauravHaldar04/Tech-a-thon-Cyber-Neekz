@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Student-Teacher Portal',
       theme: ThemeData(
+        fontFamily: 'Inter',
         primarySwatch: Colors.blue,
       ),
       home: const UserTypeSelectionPage(),

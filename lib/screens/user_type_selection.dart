@@ -10,7 +10,11 @@ class UserTypeSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Type Selection'),
+        centerTitle: true,
+        title: const Text(
+          'User Type Selection',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -18,11 +22,13 @@ class UserTypeSelectionPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              decoration: BoxDecoration(
-                  gradient: GlobalVariables.primaryGradient,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(30))),
+              decoration: const BoxDecoration(
+                gradient: GlobalVariables.primaryGradient,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+              ),
               alignment: Alignment.bottomCenter,
               width: MediaQuery.of(context).size.width - 16,
               height: (MediaQuery.of(context).size.height / 3.5),
