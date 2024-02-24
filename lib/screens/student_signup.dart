@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:techathon/global/globalvariables.dart';
 
 class StudentSignupPage extends StatelessWidget {
   const StudentSignupPage({super.key});
@@ -7,8 +8,12 @@ class StudentSignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student Login'),
-        backgroundColor: const Color.fromARGB(255, 231, 128, 26),
+        title: const Text('Student Login',style: TextStyle(color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient:GlobalVariables.primaryGradient
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -33,7 +38,7 @@ class StudentSignupPage extends StatelessWidget {
                 // Perform student login logic here
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 231, 128, 26),
+                backgroundColor: const Color.fromRGBO(255, 98, 31, 1),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
@@ -41,7 +46,9 @@ class StudentSignupPage extends StatelessWidget {
               ),
               child: const Padding(
                 padding: EdgeInsets.all(15.0),
-                child: Text('Login',style: TextStyle(color: Colors.white),),
+                child: Text('Login',style: TextStyle(color: Colors.white,
+                fontSize: 19,
+                fontWeight: FontWeight.w700),),
               ),
             ),
             const SizedBox(height: 45.0),
@@ -72,21 +79,43 @@ class StudentSignupPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 50.0),
-            ElevatedButton.icon(
+            ElevatedButton(
               onPressed: () {
                 // Perform student login with Google logic here
               },
+              
               style: ElevatedButton.styleFrom(
+                
                 backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 minimumSize: const Size(350.0, 45.0),
               ),
-              icon: const Icon(Icons.abc_sharp, color: Colors.black),
-              label: const Padding(
+              child:  Padding(
                 padding: EdgeInsets.all(15.0),
-                child: Text('Login with Google', style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold  )),
+                child: Row(
+                  
+                  children: [
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: const BoxDecoration(
+                        image:   DecorationImage(image: AssetImage('assets/images/Google.png'), fit: BoxFit.cover) ,
+                      )
+                   
+                    ),
+                    SizedBox(width: 49,),
+                     const Text(
+                      'Login with Google',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 19
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 16.0),
@@ -107,7 +136,7 @@ class StudentSignupPage extends StatelessWidget {
                     'Create an Account',
                     style: TextStyle(
                       
-                      color: Color.fromARGB(255, 231, 128, 26),
+                      color: const Color.fromRGBO(255, 98, 31, 1),
                     ),
                   ),
                 ),

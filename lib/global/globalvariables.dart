@@ -6,4 +6,5 @@ class GlobalVariables {
       stops: [0.1, 1],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter);
+      static const fontsize = 33;
 }
