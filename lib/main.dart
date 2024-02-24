@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Inter',
         primarySwatch: Colors.blue,
       ),
-      home: const StudentSignupPage2(),
+      home: const UserTypeSelectionPage(),
     );
   }
 }
