@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:techathon/screens/classroom_input.dart';
+// import 'package:techathon/screens/classroom_input.dart';
 import 'package:techathon/widgets/card_tt.dart';
       import 'user_type_selection.dart';
 
@@ -9,6 +9,7 @@ import 'package:techathon/widgets/card_tt.dart';
         @override
         Widget build(BuildContext context) {
           return Scaffold(
+            backgroundColor: Colors.white,
             appBar: AppBar(
               title: const Text(
                 'Student Dashboard',
@@ -51,7 +52,7 @@ import 'package:techathon/widgets/card_tt.dart';
                     child: Text(
                       'Menu',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 24,
                       ),
                     ),
@@ -92,31 +93,32 @@ import 'package:techathon/widgets/card_tt.dart';
                 ],
               ),
             ),
-            bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: Color.fromRGBO(241, 123, 55, 1) ,
-
-        selectedFontSize: 10,
-        // unselectedFontSize: 0,
-        iconSize: 35,
-        onTap: (value){
-          
-        },
-        
-        items: const [
-          BottomNavigationBarItem(
-            
-            icon: Icon(Icons.home,color: Colors.white,),
-            label: 'Home',
-
-
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat,color: Colors.white,),
-            label: 'Cart',
-          ),
-          
-        ],
-      ),
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.only(top:4),
+              child: BottomNavigationBar(
+                backgroundColor: 
+                Colors.white,
+                selectedFontSize: 10,
+                iconSize: 35,
+                onTap: (value) {},
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.home,
+                      color: Color.fromRGBO(241, 123, 55, 1),
+                    ),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.chat,
+                      color: Color.fromRGBO(241, 123, 55, 1),
+                    ),
+                    label: 'Cart',
+                  ),
+                ],
+              ),
+            ),
           );
         }
       }
