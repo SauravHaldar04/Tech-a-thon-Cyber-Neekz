@@ -22,7 +22,7 @@ class StudentSignupPage extends StatelessWidget {
           children: [
             const TextField(
               decoration: InputDecoration(
-                labelText: 'Email',
+                labelText: 'Student-ID',
               ),
             ),
             const SizedBox(height: 16.0),

@@ -69,7 +69,7 @@ class UserTypeSelectionPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const TeacherSignupPage(),
+                            builder: (context) => const TeacherLoginPage(),
                           ),
                         );
                       },
