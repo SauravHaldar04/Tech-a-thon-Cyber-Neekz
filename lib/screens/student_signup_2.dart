@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:techathon/global/globalvariables.dart';
 import 'package:techathon/screens/student_signup.dart';
 
-class StudentSignupPage2 extends StatelessWidget {
+class StudentSignupPage2 extends StatefulWidget {
   const StudentSignupPage2({super.key});
 
   @override
+  State<StudentSignupPage2> createState() => _StudentSignupPage2State();
+}
+
+class _StudentSignupPage2State extends State<StudentSignupPage2> {
+  @override
   Widget build(BuildContext context) {
+    String selectedValue = "FE";
+    String selectedDivision = "C1";
+    String selectedCourse = "Economics";
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -23,12 +31,13 @@ class StudentSignupPage2 extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 120.0),
               const TextField(
                 decoration: InputDecoration(
-                  labelText: 'Email',
+                  labelText: 'Student ID',
                   floatingLabelStyle: TextStyle(color: Colors.orange),
                   focusColor: Colors.orange,
                   focusedBorder: UnderlineInputBorder(
@@ -54,8 +63,120 @@ class StudentSignupPage2 extends StatelessWidget {
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.orange),
                   ),
-                  labelText: 'Confirm Password',
+                  labelText: 'Name',
                   floatingLabelStyle: TextStyle(color: Colors.orange),
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const Text('Select a year'),
+              Container(
+                height: 70,
+                width: 80,
+                child: DropdownButton<String>(
+                  elevation: 6,
+                  value: selectedValue,
+                  items: const <DropdownMenuItem<String>>[
+                    DropdownMenuItem(
+                      value: 'FE',
+                      child: Text("FE"),
+                    ),
+                    DropdownMenuItem(
+                      value: "SE",
+                      child: Text("SE"),
+                    ),
+                    DropdownMenuItem(
+                      value: "TE",
+                      child: Text("TE"),
+                    ),
+                    DropdownMenuItem(
+                      value: "BE",
+                      child: Text("BE"),
+                    ),
+                  ],
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedValue = newValue!;
+                      // Perform actions based on the selected value
+                    });
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const Text('Select a Division'),
+              Container(
+                height: 70,
+                width: 80,
+                child: DropdownButton<String>(
+                  elevation: 6,
+                  value: selectedDivision,
+                  items: const <DropdownMenuItem<String>>[
+                    DropdownMenuItem(
+                      value: "C1",
+                      child: Text("C1"),
+                    ),
+                    DropdownMenuItem(
+                      value: "C2",
+                      child: Text("C2"),
+                    ),
+                    DropdownMenuItem(
+                      value: "DS1",
+                      child: Text("DS1"),
+                    ),
+                    DropdownMenuItem(
+                      value: "Mech1",
+                      child: Text("Mech1"),
+                    ),
+                    DropdownMenuItem(
+                      value: "Mech2",
+                      child: Text("Mech2"),
+                    ),
+                  ],
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedValue = newValue!;
+                      // Perform actions based on the selected value
+                    });
+                  },
+                ),
+              ),
+              Text("Select Course"),
+              Container(
+                height: 70,
+                child: DropdownButton<String>(
+                  elevation: 6,
+                  value: selectedCourse,
+                  items: const <DropdownMenuItem<String>>[
+                    DropdownMenuItem(
+                      value: "Economics",
+                      child: Text("Economics"),
+                    ),
+                    DropdownMenuItem(
+                      value: "History",
+                      child: Text("History"),
+                    ),
+                    DropdownMenuItem(
+                      value: "Computer Science",
+                      child: Text("Computer Science"),
+                    ),
+                    DropdownMenuItem(
+                      value: "Political Science",
+                      child: Text("Political Science"),
+                    ),
+                    DropdownMenuItem(
+                      value: "Literature",
+                      child: Text("Literature"),
+                    ),
+                  ],
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedValue = newValue!;
+                      // Perform actions based on the selected value
+                    });
+                  },
                 ),
               ),
               const SizedBox(height: 45.0),
@@ -82,8 +203,6 @@ class StudentSignupPage2 extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 45.0),
-              const SizedBox(height: 50.0),
-              const SizedBox(height: 16.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
