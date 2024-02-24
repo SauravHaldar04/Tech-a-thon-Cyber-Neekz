@@ -90,11 +90,28 @@ class StudentSignupPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16.0),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Back to User Type Selection'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Not Registered yet? ',
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    // Perform navigation logic here
+                  },
+                  child: const Text(
+                    'Create an Account',
+                    style: TextStyle(
+                      
+                      color: Color.fromARGB(255, 231, 128, 26),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
