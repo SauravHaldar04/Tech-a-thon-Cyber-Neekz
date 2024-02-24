@@ -1,35 +1,48 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:mongo_dart/mongo_dart.dart';
+import 'package:techathon/global/globalvariables.dart';
 
 class ClassroomServices {
-  static Future<void> main() async {
+  static Future<int> getStudentLength(
+      String collegeYear, String division, String course) async {
     final connectionString =
-        'mongodb+srv://user1:abcd@techathon.snbtxqs.mongodb.net/Techathonn?retryWrites=true&w=majority&appName=Techathon'; // Replace with your actual URI
+        GlobalVariables.mongoUrl; // Replace with your actual URI
 
     try {
       final db = await Db.create(connectionString);
       await db.open();
-      inspect(db);
-      // Access collections
-
-      final classroomCollection = db.collection('Classrooms');
       final studentCollection = db.collection('Students');
       // ... other collections
-
       // Perform operations (e.g., print Classroom collection)
-      final classrooms = await classroomCollection.count();
-      final classroom =
-          await classroomCollection.findOne(where.eq('classroom', 101));
-      print(classroom);
-      final student = await studentCollection.count();
+      final student = await studentCollection.count(where
+          .eq('course', course)
+          .eq('year', collegeYear)
+          .eq('division', division));
       print("Number of students are : $student");
-      print(classrooms);
-
+      return student;
       // Close the connection
       await db.close();
     } catch (e) {
       print('Error connecting to MongoDB: $e');
+      return -1;
+    }
+  }
+
+  static Future allocateClassroom(
+      int noOfStudents, String classType, int startTime) async {
+    try {
+      final connectionString =
+          GlobalVariables.mongoUrl; // Replace with your actual URI
+      final db = await Db.create(connectionString);
+      await db.open();
+      final classroomCollection = db.collection('Classrooms');
+      final classroom = await classroomCollection.find({
+        'total_capacity': {'\$lte': noOfStudents}
+      }).toList();
+      print(classroom);
+    } catch (e) {
+      print(e.toString());
     }
   }
 }

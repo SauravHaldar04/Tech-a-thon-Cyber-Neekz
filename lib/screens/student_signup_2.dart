@@ -10,11 +10,11 @@ class StudentSignupPage2 extends StatefulWidget {
 }
 
 class _StudentSignupPage2State extends State<StudentSignupPage2> {
+  String selectedValue = "FE";
+  String selectedDivision = "C1";
+  String selectedCourse = "Economics";
   @override
   Widget build(BuildContext context) {
-    String selectedValue = "FE";
-    String selectedDivision = "C1";
-    String selectedCourse = "Economics";
     return Scaffold(
       appBar: AppBar(
         title: const Text(

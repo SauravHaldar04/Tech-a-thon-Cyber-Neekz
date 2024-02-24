@@ -12,13 +12,16 @@ class CreateClassroomPage extends StatefulWidget {
 class _CreateClassroomPageState extends State<CreateClassroomPage> {
   int numberOfBenches = 0;
   int benchCapacity = 0;
-  String course = '';
+  String course = 'Economics';
   String lectureTime = '';
+  String selectedValue = "FE";
+  String selectedDivision = "C1";
+  String selectedType = "Classroom";
+  int noOfStudents = 0;
+  TimeOfDay? timeOfDay;
 
   @override
   Widget build(BuildContext context) {
-    String selectedValue = "FE";
-    String selectedDivision = 'C1';
     return Scaffold(
       appBar: AppBar(
         title: const Text('Create Classroom'),
@@ -69,7 +72,7 @@ class _CreateClassroomPageState extends State<CreateClassroomPage> {
               child: DropdownButton<String>(
                 elevation: 6,
                 value: selectedDivision,
-                items: const <DropdownMenuItem<String>>[
+                items: <DropdownMenuItem<String>>[
                   DropdownMenuItem(
                     value: "C1",
                     child: Text("C1"),
@@ -93,7 +96,35 @@ class _CreateClassroomPageState extends State<CreateClassroomPage> {
                 ],
                 onChanged: (String? newValue) {
                   setState(() {
-                    selectedValue = newValue!;
+                    selectedDivision = newValue!;
+                    // Perform actions based on the selected value
+                  });
+                },
+              ),
+            ),
+            Text("Select Classroom Type"),
+            SizedBox(
+              height: 4,
+            ),
+            Container(
+              height: 70,
+              width: 150,
+              child: DropdownButton<String>(
+                elevation: 6,
+                value: selectedType,
+                items: <DropdownMenuItem<String>>[
+                  DropdownMenuItem(
+                    value: "Classroom",
+                    child: Text("Classroom"),
+                  ),
+                  DropdownMenuItem(
+                    value: "Lab",
+                    child: Text("Lab"),
+                  ),
+                ],
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedType = newValue!;
                     // Perform actions based on the selected value
                   });
                 },
@@ -102,7 +133,7 @@ class _CreateClassroomPageState extends State<CreateClassroomPage> {
             const SizedBox(height: 16.0),
             ElevatedButton(
                 onPressed: () async {
-                  TimeOfDay? dateTime = await showMyTimePicker(context);
+                  timeOfDay = await showMyTimePicker(context);
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -115,7 +146,10 @@ class _CreateClassroomPageState extends State<CreateClassroomPage> {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () async {
-                await ClassroomServices.main();
+                noOfStudents = await ClassroomServices.getStudentLength(
+                    selectedValue, selectedDivision, course);
+                await ClassroomServices.allocateClassroom(
+                    noOfStudents, selectedType, timeOfDayToInteger(timeOfDay!));
               },
               style: ElevatedButton.styleFrom(
                 textStyle: TextStyle(color: Colors.orange),
@@ -140,6 +174,14 @@ class _CreateClassroomPageState extends State<CreateClassroomPage> {
         ),
       ),
     );
+  }
+
+  int timeOfDayToInteger(TimeOfDay timeOfDay) {
+    if (timeOfDay == null) {
+      throw ArgumentError('TimeOfDay cannot be null');
+    }
+    print("${((timeOfDay.hour * 60 + timeOfDay.minute) / 60)}");
+    return timeOfDay.hour * 60 + timeOfDay.minute;
   }
 
   Future<TimeOfDay?> showMyTimePicker(BuildContext context) async {
