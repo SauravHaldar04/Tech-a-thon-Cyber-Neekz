@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:techathon/global/globalvariables.dart';
+import 'package:techathon/screens/dashboard_teacher.dart';
 import 'package:techathon/screens/teacher_signup_page2.dart';
 
 class TeacherLoginPage extends StatelessWidget {
@@ -40,7 +41,8 @@ class TeacherLoginPage extends StatelessWidget {
               const SizedBox(height: 45.0),
               ElevatedButton(
                 onPressed: () {
-                  // Perform student login logic here
+                  Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => TeacherDashboard()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(255, 98, 31, 1),
@@ -86,7 +88,8 @@ class TeacherLoginPage extends StatelessWidget {
               const SizedBox(height: 50.0),
               ElevatedButton(
                 onPressed: () {
-                  // Perform student login with Google logic here
+                  
+                    
                 },
                 
                 style: ElevatedButton.styleFrom(

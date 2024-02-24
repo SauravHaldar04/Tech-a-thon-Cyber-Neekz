@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:techathon/screens/dashboard_student.dart';
 import 'package:techathon/screens/dashboard_teacher.dart';
 
 import 'package:techathon/screens/user_type_selection.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Inter',
         primarySwatch: Colors.blue,
       ),
-      home: const Dashboard(),
+      home: const StudentDashboard(),
     );
   }
 }
