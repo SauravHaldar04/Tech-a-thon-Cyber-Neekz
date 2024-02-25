@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:techathon/screens/chatHelp.dart';
+// import 'package:techathon/screens/chatHelp.dart';
+import 'package:techathon/screens/profile_student.dart';
+import 'package:techathon/widgets/studentScrollDB.dart';
 // import 'package:techathon/screens/classroom_input.dart';
-import 'package:techathon/widgets/card_tt.dart';
+// import 'package:techathon/widgets/card_tt.dart';
+// import 'package:techathon/widgets/studentScrollDB.dart';
       import 'user_type_selection.dart';
 
-      class StudentDashboard extends StatelessWidget {
+      class StudentDashboard extends StatefulWidget {
         const StudentDashboard({Key? key});
 
+  @override
+  State<StudentDashboard> createState() => _StudentDashboardState();
+}
+
+class _StudentDashboardState extends State<StudentDashboard> {
+  int currentPage=0;
+  List<Widget> pages = const [ StudentScroll(), ProfileStudent(),SplashScreen()];
+
+   
+   
         @override
         Widget build(BuildContext context) {
           return Scaffold(
@@ -72,53 +87,51 @@ import 'package:techathon/widgets/card_tt.dart';
               ),
             ),
             
-            body: const SingleChildScrollView(
-              child: Column(
-                children: [
-                 
-                  SingleChildScrollView(
-                    child: Column(
-                      children: [
-                    CustomCard(classroomNo: '101', course: 'Maths', timing: '8am-9am', branchDiv: 'SY-Btech'),
-                    CustomCard(classroomNo: '102', course: 'History', timing: '10am-11am', branchDiv: 'TY-Btech'),
-                    CustomCard(classroomNo: '103', course: 'DBMS', timing: '12pm-1pm', branchDiv: 'FY-Btech'),
-                    CustomCard(classroomNo: '104', course: 'DSA', timing: '2pm-3pm', branchDiv: 'FY-Btech'),
-                    CustomCard(classroomNo: '105', course: 'FLAT', timing: '3pm-4pm', branchDiv: 'TY-Btech'),
-                    CustomCard(classroomNo: '108', course: 'FLAT', timing: '3pm-4pm', branchDiv: 'TY-Btech'),
-                    CustomCard(classroomNo: '102', course: 'FLAT', timing: '3pm-4pm', branchDiv: 'TY-Btech')
-                      ]
-                    ),
-                  )
-                  
-                ],
-              ),
-            ),
+            body: pages[currentPage],
+            
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.only(top:4),
               child: BottomNavigationBar(
-                backgroundColor: 
-                Colors.white,
-                selectedFontSize: 10,
+                
+                onTap: (int index) {
+                  setState(() {
+                    currentPage = index;
+                  });
+                },
+                currentIndex: currentPage,
+                unselectedLabelStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                selectedLabelStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                selectedFontSize: 13,
+                unselectedFontSize: 13,
                 iconSize: 35,
-                onTap: (value) {},
+               
                 items: const [
                   BottomNavigationBarItem(
+
                     icon: Icon(
                       Icons.home,
-                      color: Color.fromRGBO(241, 123, 55, 1),
+                      color: Color.fromRGBO(255, 98, 31, 1),
                     ),
                     label: 'Home',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.chat,
-                      color: Color.fromRGBO(241, 123, 55, 1),
+                      
+                      Icons.person,
+                      color: Color.fromRGBO(255, 98, 31, 1),
                     ),
-                    label: 'Cart',
+                    label: 'Profile',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.chat,
+                      color: Color.fromRGBO(255, 98, 31, 1),
+                    ),
+                    label: 'Chat',
                   ),
                 ],
               ),
             ),
           );
         }
-      }
+}
