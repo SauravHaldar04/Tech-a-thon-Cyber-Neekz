@@ -6,5 +6,7 @@ class GlobalVariables {
       stops: [0.1, 1],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter);
-      static const fontsize = 33;
+  static const fontsize = 33;
+  static String mongoUrl =
+      'mongodb+srv://user1:abcd@techathon.snbtxqs.mongodb.net/Techathonn?retryWrites=true&w=majority&appName=Techathon';
 }

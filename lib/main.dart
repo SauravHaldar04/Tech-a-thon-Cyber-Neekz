@@ -4,8 +4,8 @@ import 'package:techathon/screens/dashboard_teacher.dart';
 
 import 'package:techathon/screens/user_type_selection.dart';
 
-
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
