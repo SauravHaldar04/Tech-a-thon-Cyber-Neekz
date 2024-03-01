@@ -18,7 +18,7 @@ class _chatHelp2State extends State<chatHelp2> {
 
   List <ChatMessage> allMessages=[];
   List <ChatUser> typing=[];
-  final ourUrl='https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDN75ihrCa2m0elIiNZZqkhfjDfK7k_7wY';
+  final ourUrl='https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$apikey';
   final header = {
     "Content-Type":"application/json"
   };
